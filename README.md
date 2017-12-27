@@ -71,7 +71,7 @@ Block explorers usually display hashes in big-endian notation.
 The following Python code will calculate the SHA-256d hash of Block
 100000. The header is built from the six fields described above,
 concatenated together as little-endian values in hex notation:
-
+```
 >>> import hashlib
 >>> header_hex = ("01000000" +
 ... "ae178934851bfa0e83ccb6a3fc4bfddff3641e104b6c4680c31509074e699be2" +
@@ -85,15 +85,16 @@ concatenated together as little-endian values in hex notation:
 '60ce4639bf63532b27e8f8b036b9846f5d2ae18556289f80e38b85a5df4910e1'
 >>> hash[::-1].encode('hex_codec')
 'e11049dfa5858be3809f285685e12a5d6f84b936b0f8e8272b5363bf3946ce60'
+```
 
 Alternatively, using the scrypt package:
 ===========
-
+```
 >>> import scrypt
 >>> pow_hash = scrypt.hash(header_bin, header_bin, 1024, 1, 1, 32)
 >>> pow_hash[::-1].encode('hex_codec')
 '000000003b4ba52ab765631e20a04b88cd27f0b66d3509fb2da7781fae6d7901'
-
+```
 Note that the scrypt hash, which is a 256-bit number, has many leading zero
 bits when stored or printed as a big-endian value (leading digits are the most
 significant digits).
@@ -137,7 +138,7 @@ to a Gambler's Ruin problem. Suppose a gambler with unlimited credit starts
 at a deficit and plays potentially an infinite number of trials to try to reach
 breakeven. We can calculate the probability he ever reaches breakeven, or
 that an attacker ever catches up with the honest chain, as follows
-
+```
 p = probability an honest node finds the next block
 q = probability the attacker finds the next block
 qz = probability the attacker will ever catch up from z blocks behind
@@ -145,7 +146,7 @@ qz = probability the attacker will ever catch up from z blocks behind
      | 1 if p<=q
 qz = |
      | (q/p)^z  if p>q
-     
+  ```
 Given our assumption that p > q, the probability drops exponentially as the
 number of blocks the attacker has to catch up with increases. With the odds
 against him, if he doesn't make a lucky lunge forward early on, his chances
@@ -170,15 +171,16 @@ blocks have been linked after it. He doesn't know the exact amount of
 progress the attacker has made, but assuming the honest blocks took the
 average expected time per block, the attacker's potential progress will be a
 Poisson distribution with expected value:
-
+```
  λ = z(p/q)
- 
+```
  To get the probability the attacker could still catch up now, we multiply the Poisson density for
  each amount of progress he could have made by the probability he Rearranging to avoid summing the
  infinite tail of the distribution...
  
  Running some results, we can see the probability drop off exponentially with
 z.
+```
 q=0.1
  z=0 P=1.0000000
  z=1 P=0.2045873
@@ -203,7 +205,10 @@ q=0.3
  z=40 P=0.0000095
  z=45 P=0.0000024
  z=50 P=0.0000006
+ ```
+ 
   Solving for P less than 0.1%...
+  ```
 P < 0.001
  q=0.10 z=5
  q=0.15 z=8
@@ -213,7 +218,7 @@ P < 0.001
  q=0.35 z=41
  q=0.40 z=89
  q=0.45 z=340
- 
+ ```
  vi. Network propagation
  ==========
  The steps to run the network are as follows:
