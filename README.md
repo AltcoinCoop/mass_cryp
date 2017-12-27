@@ -8,7 +8,7 @@ that is fully decentralised over blockchain. Mathematically proven
 cryptography secures the network and empowers individuals to control their
 own finances with uncompromised security
 
-*  i. Proof of work *
+  ##i. Proof of work 
 
 The proof-of-work involves finding for a value that when hashed with scrypt
 hashing algorithm, the hash begins with a number of zero bits. The average work
