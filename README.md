@@ -1,73 +1,23 @@
-Masscoin integration/staging tree
+Blockchain Technology
 ================================
 
-http://www.masscoin.org
 
-Copyright (c) 2009-2014 Bitcoin Developers
-Copyright (c) 2011-2014 Masscoin Developers
+MASS coin is a peer-to-peer currency that enables instant, near-zero cost
+payments to anyone in the world. Mass Coin is a global payment network
+that is fully decentralised over blockchain. Mathematically proven
+cryptography secures the network and empowers individuals to control their
+own finances with uncompromised security
 
-What is Masscoin?
-----------------
+*  i. Proof of work *
 
-Masscoin is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
- - 2.5 minute block targets
- - subsidy halves in 840k blocks (~4 years)
- - ~84 million total coins
+The proof-of-work involves finding for a value that when hashed with scrypt
+hashing algorithm, the hash begins with a number of zero bits. The average work
+required is exponential in the number of zero bits required and can be verified by
+executing a single hash.
 
-The rest is the same as Bitcoin.
- - 50 coins per block
- - 2016 blocks to retarget difficulty
-
-For more information, as well as an immediately useable, binary version of
-the Masscoin client sofware, see http://www.masscoin.org.
-
-License
--------
-
-Masscoin is released under the terms of the MIT license. See `COPYING` for more
-information or see http://opensource.org/licenses/MIT.
-
-Development process
--------------------
-
-Developers work in their own trees, then submit pull requests when they think
-their feature or bug fix is ready.
-
-If it is a simple/trivial/non-controversial change, then one of the Masscoin
-development team members simply pulls it.
-
-If it is a *more complicated or potentially controversial* change, then the patch
-submitter will be asked to start a discussion with the devs and community.
-
-The patch will be accepted if there is broad consensus that it is a good thing.
-Developers should expect to rework and resubmit patches if the code doesn't
-match the project's coding conventions (see `doc/coding.txt`) or are
-controversial.
-
-The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/masscoin-project/masscoin/tags) are created
-regularly to indicate new official, stable release versions of Masscoin.
-
-Testing
--------
-
-Testing and code review is the bottleneck for development; we get more pull
-requests than we can review and test. Please be patient and help out, and
-remember this is a security-critical project where any mistake might cost people
-lots of money.
-
-### Automated Testing
-
-Developers are strongly encouraged to write unit tests for new code, and to
-submit new unit tests for old code.
-
-Unit tests for the core code are in `src/test/`. To compile and run them:
-
-    cd src; make -f makefile.unix test
-
-Unit tests for the GUI code are in `src/qt/test/`. To compile and run them:
-
-    qmake BITCOIN_QT_TEST=1 -o Makefile.test bitcoin-qt.pro
-    make -f Makefile.test
-    ./masscoin-qt_test
-
+For our timestamp network, we implement the proof-of-work by incrementing a
+nonce in the block until a value is found that gives the block's hash the required
+zero bits. Once the CPU effort has been expended to make it satisfy the proofof-work,
+the block cannot be changed without redoing the work. As later blocks
+are chained after it, the work to change the block would include redoing all the
+blocks after it.
