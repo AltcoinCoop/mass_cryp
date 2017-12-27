@@ -1,0 +1,9 @@
+Building Masscoin
+
+See doc/readme-qt.rst for instructions on building Masscoin-Qt,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of Masscoin.
+
+See doc/build-*.txt for instructions on building masscoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of Masscoin.
